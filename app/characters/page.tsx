@@ -21,7 +21,7 @@ interface Character {
   image_width: number;
   name: string;
   description: string;
-  link: string;
+  link: string | null;
 }
 
 export default function Characters() {
@@ -41,6 +41,36 @@ export default function Characters() {
     fetchData();
   }, []);
 
+  const renderCharacterCards = (role: String) => (
+    <div className="grid grid-cols-2 gap-4 mx-12">
+      {characters
+        .filter((character) => character.role === role)
+        .map((character) => (
+          <Card key={character.id}>
+            <CardHeader>
+              <CardTitle>{character.name}</CardTitle>
+              <CardDescription>{character.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Image
+                src={character.image}
+                width={character.image_width}
+                height={character.image_height}
+                alt={character.name}
+              />
+            </CardContent>
+            <CardFooter>
+              {character.link ? (
+                <Link href={character.link}> Learn More →</Link>
+              ) : (
+                <></>
+              )}
+            </CardFooter>
+          </Card>
+        ))}
+    </div>
+  );
+
   return (
     <BasicPageLayout title="Characters">
       <Tabs defaultValue="mainCharacters" className="text-center">
@@ -49,56 +79,10 @@ export default function Characters() {
           <TabsTrigger value="sideCharacters">Side Characters</TabsTrigger>
         </TabsList>
         <TabsContent value="mainCharacters">
-          <div className="grid grid-cols-2 gap-4 mx-12">
-            {Array.isArray(characters) &&
-              characters
-                .filter((character) => character.role === "Main Characters")
-                .map((character) => (
-                  <Card key={character.id}>
-                    <CardHeader>
-                      <CardTitle>{character.name}</CardTitle>
-                      <CardDescription>{character.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Image
-                        src={character.image}
-                        width={character.image_width}
-                        height={character.image_height}
-                        alt={character.name}
-                      />
-                    </CardContent>
-                    <CardFooter>
-                      <Link href={character.link}> Learn More →</Link>
-                    </CardFooter>
-                  </Card>
-                ))}
-          </div>
+          {renderCharacterCards("Main Characters")}
         </TabsContent>
         <TabsContent value="sideCharacters">
-          <div className="grid grid-cols-2 gap-4 mx-12">
-            {Array.isArray(characters) &&
-              characters
-                .filter(
-                  (character) => character.role === "Supporting Characters"
-                )
-                .map((character) => (
-                  <Card key={character.id}>
-                    <CardHeader>
-                      <CardTitle>{character.name}</CardTitle>
-                      <CardDescription>{character.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Image
-                        src={character.image}
-                        width={character.image_width}
-                        height={character.image_height}
-                        alt={character.name}
-                      />
-                    </CardContent>
-                    <CardFooter></CardFooter>
-                  </Card>
-                ))}
-          </div>
+          {renderCharacterCards("Supporting Characters")}
         </TabsContent>
       </Tabs>
     </BasicPageLayout>
