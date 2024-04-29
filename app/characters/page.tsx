@@ -64,6 +64,7 @@ export default function Characters() {
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
             key={character.id}
+            className="h-full"
           >
             <Card className="relative hover:shadow-xl duration-500 ease-in-out">
               <CardHeader>
@@ -100,7 +101,7 @@ export default function Characters() {
                           </motion.h1>
                         </CardTitle>
 
-                        <CardDescription className="max-w-[400px] mx-auto">
+                        <CardDescription className="max-w-[350px] mx-auto">
                           <motion.p variants={itemVariants}>
                             {character.description}
                           </motion.p>
@@ -109,7 +110,12 @@ export default function Characters() {
                         <CardFooter className="absolute bottom-0 right-0">
                           <motion.p variants={itemVariants}>
                             {character.link && (
-                              <Link href={character.link} className="hover:text-fuchsia-500"> Learn More →</Link>
+                              <Link
+                                href={character.link}
+                                className="hover:text-fuchsia-500"
+                              >
+                                Learn More →
+                              </Link>
                             )}
                           </motion.p>
                         </CardFooter>
