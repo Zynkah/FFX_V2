@@ -61,7 +61,7 @@ export default function Aeons() {
                 <p>Location: {aeon.location}</p>
               </CardContent>
               <CardFooter>
-                <Link href={aeon.link} className="buttonLink">
+                <Link href={aeon.link}>
                   Learn More →
                 </Link>
               </CardFooter>

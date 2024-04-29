@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   try {
-    const result = await sql`SELECT * FROM aeons`;
+    const result = await sql`SELECT * FROM character`;
 
-    const aeons = result.rows;
+      const characters = result.rows;
 
-    return NextResponse.json({ aeons }, { status: 200 });
+    return NextResponse.json({ characters }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
