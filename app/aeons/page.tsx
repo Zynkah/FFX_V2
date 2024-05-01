@@ -1,16 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import BasicPageLayout from "@/components/basic-page-layout";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface Aeon {
   id: string;
@@ -43,29 +37,34 @@ export default function Aeons() {
 
   return (
     <BasicPageLayout title="Aeons">
-      <div className="grid grid-cols-2 gap-4 mx-12">
+      <div className="grid lg:grid-cols-2 gap-4 mx-12">
         {Array.isArray(aeons) &&
           aeons.map((aeon) => (
-            <Card key={aeon.id} className="">
-              <CardHeader>
-                <CardTitle>{aeon.name}</CardTitle>
-                <CardDescription>{aeon.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
+            <motion.div
+              whileHover={{ translateY: -3 }}
+              whileTap={{ scale: 0.95 }}
+              key={aeon.id}
+            >
+              <BasicCardLayout
+                title={aeon.name}
+                description={aeon.description}
+                link={
+                  aeon.link && (
+                    <Link href={aeon.link} className="hover:text-fuchsia-500">
+                      Learn More →
+                    </Link>
+                  )
+                }
+              >
                 <Image
                   src={aeon.image}
                   width={aeon.image_width}
                   height={aeon.image_height}
                   alt={aeon.name}
+                  className="m-auto"
                 />
-                <p>Location: {aeon.location}</p>
-              </CardContent>
-              <CardFooter>
-                <Link href={aeon.link}>
-                  Learn More →
-                </Link>
-              </CardFooter>
-            </Card>
+              </BasicCardLayout>
+            </motion.div>
           ))}
       </div>
     </BasicPageLayout>

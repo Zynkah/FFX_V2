@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 interface BasicCardLayoutProps {
   title: string;
   description: string;
-  link: React.ReactNode;
+  link?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -48,7 +48,7 @@ export default function BasicCardLayout({
                 variants={{
                   visible: { transition: { staggerChildren: 0.3 } },
                 }}
-                className="space-y-6 my-12"
+                className="space-y-6 my-12 text-center"
               >
                 <CardTitle>
                   <motion.h1
@@ -61,7 +61,7 @@ export default function BasicCardLayout({
                   </motion.h1>
                 </CardTitle>
 
-                <CardDescription className="max-w-[350px] mx-auto">
+                <CardDescription className="max-w-[352px] mx-auto">
                   <motion.p variants={itemVariants}>{description}</motion.p>
                 </CardDescription>
 

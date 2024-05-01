@@ -44,7 +44,6 @@ export default function Characters() {
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
             key={character.id}
-            className="h-full"
           >
             <BasicCardLayout
               title={character.name}
