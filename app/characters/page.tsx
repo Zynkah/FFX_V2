@@ -1,21 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import BasicPageLayout from "@/components/basic-page-layout";
+import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -30,13 +17,6 @@ interface Character {
   description: string;
   link: string | null;
 }
-
-const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible,
-};
 
 export default function Characters() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -64,67 +44,29 @@ export default function Characters() {
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
             key={character.id}
-            className="h-full"
           >
-            <Card className="relative hover:shadow-xl duration-500 ease-in-out">
-              <CardHeader>
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <Image
-                        src={character.image}
-                        width={character.image_width}
-                        height={character.image_height}
-                        alt={character.name}
-                        className="m-auto"
-                      />
-                    </AccordionTrigger>
-
-                    <AccordionContent>
-                      <motion.article
-                        initial="hidden"
-                        animate="visible"
-                        exit={{ opacity: 0, transition: { duration: 1 } }}
-                        variants={{
-                          visible: { transition: { staggerChildren: 0.3 } },
-                        }}
-                        className="space-y-6 my-12"
-                      >
-                        <CardTitle>
-                          <motion.h1
-                            variants={{
-                              hidden: { opacity: 0, y: -20 },
-                              visible,
-                            }}
-                          >
-                            {character.name}
-                          </motion.h1>
-                        </CardTitle>
-
-                        <CardDescription className="max-w-[350px] mx-auto">
-                          <motion.p variants={itemVariants}>
-                            {character.description}
-                          </motion.p>
-                        </CardDescription>
-
-                        <CardFooter className="absolute bottom-0 right-0">
-                          <motion.p variants={itemVariants}>
-                            {character.link && (
-                              <Link
-                                href={character.link}
-                                className="hover:text-fuchsia-500"
-                              >
-                                Learn More →
-                              </Link>
-                            )}
-                          </motion.p>
-                        </CardFooter>
-                      </motion.article>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+            <BasicCardLayout
+              title={character.name}
+              description={character.description}
+              link={
+                character.link && (
+                  <Link
+                    href={character.link}
+                    className="hover:text-fuchsia-500"
+                  >
+                    Learn More →
+                  </Link>
+                )
+              }
+            >
+              <Image
+                src={character.image}
+                width={character.image_width}
+                height={character.image_height}
+                alt={character.name}
+                className="m-auto"
+              />
+            </BasicCardLayout>
           </motion.div>
         ))}
     </div>

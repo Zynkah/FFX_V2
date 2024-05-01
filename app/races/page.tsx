@@ -1,15 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import BasicPageLayout from "@/components/basic-page-layout";
+import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Race {
   id: string;
@@ -43,20 +38,25 @@ export default function Races() {
       {races
         .filter((race) => race.role === role)
         .map((race) => (
-          <Card key={race.id}>
-            <CardHeader>
-              <CardTitle>{race.name}</CardTitle>
-              <CardDescription>{race.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
+            <motion.div
+            whileHover={{ translateY: -3 }}
+            whileTap={{ scale: 0.95 }}
+            key={race.id}
+          >
+            <BasicCardLayout
+              title={race.name}
+              description={race.description}
+              
+            >
               <Image
                 src={race.image}
                 width={race.image_width}
                 height={race.image_height}
                 alt={race.name}
+                className="m-auto"
               />
-            </CardContent>
-          </Card>
+            </BasicCardLayout>
+          </motion.div>
         ))}
     </div>
   );

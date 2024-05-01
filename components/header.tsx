@@ -13,7 +13,7 @@ export default function Header() {
           height={600}
           width={390}
           alt="FFX Logo"
-          className="mx-auto"
+          className="mx-auto rounded-lg"
         />
       </Link>
       <h1 className="text-center text-4xl font-bold mb-8">Final Fantasy X</h1>
