@@ -3,30 +3,27 @@ import { useState, useEffect } from "react";
 import BasicPageLayout from "@/components/basic-page-layout";
 import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
-interface Aeon {
+interface Summoner {
   id: string;
   role: string;
-  image: string;
-  image_height: number;
-  image_width: number;
+  image: string | null;
+  image_height: number | null;
+  image_width: number | null;
   name: string;
   description: string;
-  link: string;
-  location: string;
 }
 
-export default function Aeons() {
-  const [aeons, setAeons] = useState<Aeon[]>([]);
+export default function Summoners() {
+  const [summoners, setSummoners] = useState<Summoner[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("/api/get-aeons");
+        const response = await fetch("/api/get-summoners");
         const data = await response.json();
-        setAeons(data.aeons);
+        setSummoners(data.summoners);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,33 +33,27 @@ export default function Aeons() {
   }, []);
 
   return (
-    <BasicPageLayout title="Aeons">
+    <BasicPageLayout title="Summoners">
       <div className="grid lg:grid-cols-2 gap-4 mx-12">
-        {Array.isArray(aeons) &&
-          aeons.map((aeon) => (
+        {Array.isArray(summoners) &&
+          summoners.map((summoner) => (
             <motion.div
               whileHover={{ translateY: -3 }}
               whileTap={{ scale: 0.95 }}
-              key={aeon.id}
+              key={summoner.id}
             >
               <BasicCardLayout
-                title={aeon.name}
-                description={aeon.description}
-                link={
-                  aeon.link && (
-                    <Link href={aeon.link} className="hover:text-fuchsia-500">
-                      Learn More →
-                    </Link>
-                  )
-                }
+                title={summoner.name}
+                description={summoner.description}
+               
               >
-                <Image
-                  src={aeon.image}
-                  width={aeon.image_width}
-                  height={aeon.image_height}
-                  alt={aeon.name}
+                {summoner?.image && summoner?.image_width && summoner?.image_height && <Image
+                  src={summoner.image}
+                  width={summoner.image_width}
+                  height={summoner.image_height}
+                  alt={summoner.name}
                   className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
-                />
+                />}
               </BasicCardLayout>
             </motion.div>
           ))}

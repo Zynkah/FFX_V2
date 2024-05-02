@@ -45,7 +45,7 @@ export default function Scripts() {
   }, []);
 
   const renderScriptCards = (role: String) => (
-    <div className=" mx-12">
+    <div className="mx-12">
       {scripts
         .filter((script) => script.role === role)
         .map((script) => (

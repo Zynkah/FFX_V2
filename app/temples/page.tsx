@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-interface Aeon {
+interface Temple {
   id: string;
   role: string;
   image: string;
@@ -18,15 +18,15 @@ interface Aeon {
   location: string;
 }
 
-export default function Aeons() {
-  const [aeons, setAeons] = useState<Aeon[]>([]);
+export default function Temples() {
+  const [temples, setTemples] = useState<Temple[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("/api/get-aeons");
+        const response = await fetch("/api/get-temples");
         const data = await response.json();
-        setAeons(data.aeons);
+        setTemples(data.temples);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,32 +36,32 @@ export default function Aeons() {
   }, []);
 
   return (
-    <BasicPageLayout title="Aeons">
+    <BasicPageLayout title="Temples">
       <div className="grid lg:grid-cols-2 gap-4 mx-12">
-        {Array.isArray(aeons) &&
-          aeons.map((aeon) => (
+        {Array.isArray(temples) &&
+          temples.map((temple) => (
             <motion.div
               whileHover={{ translateY: -3 }}
               whileTap={{ scale: 0.95 }}
-              key={aeon.id}
+              key={temple.id}
             >
               <BasicCardLayout
-                title={aeon.name}
-                description={aeon.description}
+                title={temple.name}
+                description={temple.description}
                 link={
-                  aeon.link && (
-                    <Link href={aeon.link} className="hover:text-fuchsia-500">
+                  temple.link && (
+                    <Link href={temple.link} className="hover:text-fuchsia-500">
                       Learn More →
                     </Link>
                   )
                 }
               >
                 <Image
-                  src={aeon.image}
-                  width={aeon.image_width}
-                  height={aeon.image_height}
-                  alt={aeon.name}
-                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                  src={temple.image}
+                  width={temple.image_width}
+                  height={temple.image_height}
+                  alt={temple.name}
+                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-cover"
                 />
               </BasicCardLayout>
             </motion.div>

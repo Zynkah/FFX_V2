@@ -34,26 +34,22 @@ export default function Races() {
   }, []);
 
   const renderRaceCards = (role: String) => (
-    <div className="grid grid-cols-2 gap-4 mx-12">
+    <div className="grid lg:grid-cols-2 gap-4 mx-12">
       {races
         .filter((race) => race.role === role)
         .map((race) => (
-            <motion.div
+          <motion.div
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
             key={race.id}
           >
-            <BasicCardLayout
-              title={race.name}
-              description={race.description}
-              
-            >
+            <BasicCardLayout title={race.name} description={race.description}>
               <Image
                 src={race.image}
                 width={race.image_width}
                 height={race.image_height}
                 alt={race.name}
-                className="m-auto"
+                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>

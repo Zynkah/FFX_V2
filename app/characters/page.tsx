@@ -64,7 +64,7 @@ export default function Characters() {
                 width={character.image_width}
                 height={character.image_height}
                 alt={character.name}
-                className="m-auto"
+                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>
