@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 interface PlayerProps {
   name: string;
@@ -21,16 +14,11 @@ export default function PlayersTable({
   children,
 }: PlayerProps) {
   return (
-
-
-
-        <TableRow>
-          <TableCell className="font-medium">{children}</TableCell>
-          <TableCell>{name}</TableCell>
-          <TableCell>{location}</TableCell>
-          <TableCell className="text-right">{techniques}</TableCell>
-        </TableRow>
-   
-  
+    <TableRow>
+      <TableCell className="font-medium">{children}</TableCell>
+      <TableCell>{name}</TableCell>
+      <TableCell>{location}</TableCell>
+      <TableCell className="text-right">{techniques}</TableCell>
+    </TableRow>
   );
 }
