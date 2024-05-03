@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
+
 import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +36,7 @@ export default function Temples() {
   }, []);
 
   return (
-    <BasicPageLayout title="Temples">
+
       <div className="grid lg:grid-cols-2 gap-4 mx-12">
         {Array.isArray(temples) &&
           temples.map((temple) => (
@@ -67,6 +67,6 @@ export default function Temples() {
             </motion.div>
           ))}
       </div>
-    </BasicPageLayout>
+
   );
 }

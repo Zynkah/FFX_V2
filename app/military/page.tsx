@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
 import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
@@ -61,7 +60,7 @@ export default function Military() {
   );
 
   return (
-    <BasicPageLayout title="Military">
+
       <Tabs defaultValue="crusaders" className="text-center">
         <TabsList>
           <TabsTrigger value="crusaders">Crusaders</TabsTrigger>
@@ -86,6 +85,6 @@ export default function Military() {
           {renderRaceCards("Chocobo Knights")}
         </TabsContent>
       </Tabs>
-    </BasicPageLayout>
+
   );
 }

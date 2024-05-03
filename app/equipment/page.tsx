@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
 import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
@@ -71,7 +70,6 @@ export default function Equipment() {
   );
 
   return (
-    <BasicPageLayout title="Equipment">
       <Tabs defaultValue="tidus" className="text-center">
         <TabsList>
           <TabsTrigger value="tidus">Tidus</TabsTrigger>
@@ -104,6 +102,5 @@ export default function Equipment() {
           {renderRaceCards("Rikku Equipment")}
         </TabsContent>
       </Tabs>
-    </BasicPageLayout>
   );
 }

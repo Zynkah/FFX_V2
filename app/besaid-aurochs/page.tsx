@@ -1,17 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
-import PlayersTable from "@/components/players-table"; 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import PlayersTable from "@/components/players-table";
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Image from "next/image";
-
 
 interface Players {
   id: string;
@@ -24,9 +15,8 @@ interface Players {
   image_width: number;
 }
 
-
 export default function BesaidAurochs() {
-   const [players, setPlayers] = useState<Players[]>([]);
+  const [players, setPlayers] = useState<Players[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,8 +32,7 @@ export default function BesaidAurochs() {
     fetchData();
   }, []);
   return (
-    <BasicPageLayout title="Besaid Aurochs">
-      <Table>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Image</TableHead>
@@ -69,9 +58,7 @@ export default function BesaidAurochs() {
               className="flex justify-center items-center m-auto rounded-lg object-scale-down"
             />
           </PlayersTable>
-        ))}</Table>
-    
-    </BasicPageLayout>
+        ))}
+    </Table>
   );
-  }
-
+}

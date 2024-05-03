@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
+
 import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
@@ -58,23 +58,21 @@ export default function Races() {
   );
 
   return (
-    <BasicPageLayout title="Races & Creatures">
-      <Tabs defaultValue="humanoids" className="text-center">
-        <TabsList>
-          <TabsTrigger value="humanoids">Humanoids</TabsTrigger>
-          <TabsTrigger value="demiHumans">Demi-Humans</TabsTrigger>
-          <TabsTrigger value="creatures">Creatures</TabsTrigger>
-        </TabsList>
-        <TabsContent value="humanoids">
-          {renderRaceCards("Humanoids")}
-        </TabsContent>
-        <TabsContent value="demiHumans">
-          {renderRaceCards("Demi-Humanoids")}
-        </TabsContent>
-        <TabsContent value="creatures">
-          {renderRaceCards("Creatures")}
-        </TabsContent>
-      </Tabs>
-    </BasicPageLayout>
+    <Tabs defaultValue="humanoids" className="text-center">
+      <TabsList>
+        <TabsTrigger value="humanoids">Humanoids</TabsTrigger>
+        <TabsTrigger value="demiHumans">Demi-Humans</TabsTrigger>
+        <TabsTrigger value="creatures">Creatures</TabsTrigger>
+      </TabsList>
+      <TabsContent value="humanoids">
+        {renderRaceCards("Humanoids")}
+      </TabsContent>
+      <TabsContent value="demiHumans">
+        {renderRaceCards("Demi-Humanoids")}
+      </TabsContent>
+      <TabsContent value="creatures">
+        {renderRaceCards("Creatures")}
+      </TabsContent>
+    </Tabs>
   );
 }

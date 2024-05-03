@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
 import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
@@ -62,7 +61,7 @@ export default function Locations() {
   );
 
   return (
-    <BasicPageLayout title="Locations">
+    <>
       <Tabs className="text-center">
         <TabsList>
           <TabsTrigger value="temples">Temples</TabsTrigger>
@@ -76,6 +75,6 @@ export default function Locations() {
         </TabsContent>
       </Tabs>
       {renderLocationCards("Location")}
-    </BasicPageLayout>
+    </>
   );
 }

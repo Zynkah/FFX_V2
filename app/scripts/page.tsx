@@ -1,12 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -49,7 +48,10 @@ export default function Scripts() {
       {scripts
         .filter((script) => script.role === role)
         .map((script) => (
-          <Card key={script.id} className="text-center grid grid-cols-2 items-center p-4">
+          <Card
+            key={script.id}
+            className="text-center grid grid-cols-2 items-center p-4"
+          >
             <CardHeader className="space-y-4">
               <CardTitle>{script.name}</CardTitle>
               <CardDescription>{script.description}</CardDescription>
@@ -76,19 +78,21 @@ export default function Scripts() {
   );
 
   return (
-    <BasicPageLayout title="Scripts">
-      <Tabs defaultValue="spiran" className="text-center">
-        <TabsList>
-          <TabsTrigger value="spiran">Spiran Script</TabsTrigger>
-          <TabsTrigger value="alBhed">Al Bhed Script</TabsTrigger>
-          <TabsTrigger value="yevon">Yevon Script</TabsTrigger>
-        </TabsList>
-        <TabsContent value="spiran">
-          {renderScriptCards("Spiran Scripts")}
-        </TabsContent>
-        <TabsContent value="alBhed">{renderScriptCards("Al Bhed Scripts")}</TabsContent>
-        <TabsContent value="yevon">{renderScriptCards("Yevon Scripts")}</TabsContent>
-      </Tabs>
-    </BasicPageLayout>
+    <Tabs defaultValue="spiran" className="text-center">
+      <TabsList>
+        <TabsTrigger value="spiran">Spiran Script</TabsTrigger>
+        <TabsTrigger value="alBhed">Al Bhed Script</TabsTrigger>
+        <TabsTrigger value="yevon">Yevon Script</TabsTrigger>
+      </TabsList>
+      <TabsContent value="spiran">
+        {renderScriptCards("Spiran Scripts")}
+      </TabsContent>
+      <TabsContent value="alBhed">
+        {renderScriptCards("Al Bhed Scripts")}
+      </TabsContent>
+      <TabsContent value="yevon">
+        {renderScriptCards("Yevon Scripts")}
+      </TabsContent>
+    </Tabs>
   );
 }
