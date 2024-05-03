@@ -7,6 +7,8 @@ export function TitleNames() {
   return (
     <>
       {pathname === "/" && <h1> </h1>}
+      {pathname === "/aeons" && <h1 className="text-6xl">Aeons</h1>}
+      {pathname === "/agencies" && <h1 className="text-6xl">Agencies</h1>}
       {pathname === "/blitzball" && <h1 className="text-6xl">Blitzball</h1>}
       {pathname === "/characters" && <h1 className="text-6xl">Characters</h1>}
       {pathname === "/creator-links" && (
@@ -23,6 +25,7 @@ export function TitleNames() {
       {pathname === "/technology" && <h1 className="text-6xl">Technology</h1>}
       {pathname === "/temples" && <h1 className="text-6xl">Temples</h1>}
       {pathname === "/toc" && <h1 className="text-6xl">Table of Contents</h1>}
+      {pathname === "/valefor" && <h1 className="text-6xl">Valefor</h1>}
       {pathname === "/walkthrough" && <h1 className="text-6xl">Walkthrough</h1>}
     </>
   );
