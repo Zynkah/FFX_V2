@@ -31,7 +31,6 @@ export default async function Page({ params: { charId } }: Props) {
     `http://localhost:3000/api/get-character-detail`
   );
   const charactersData = await charactersResponse.json();
-  console.log(charactersData);
 
   return (
     <div>

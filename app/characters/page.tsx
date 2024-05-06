@@ -35,7 +35,7 @@ export default function Characters() {
   }, []);
 
   const renderCharacterCards = (role: String) => (
-    <div className="grid lg:grid-cols-2 gap-4 mx-12">
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
       {characters
         .filter((character) => character.role === role)
         .map((character) => (
