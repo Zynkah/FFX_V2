@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicPageLayout from "@/components/basic-page-layout";
 import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
@@ -64,7 +63,7 @@ export default function Characters() {
                 width={character.image_width}
                 height={character.image_height}
                 alt={character.name}
-                className="m-auto"
+                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>
@@ -73,19 +72,17 @@ export default function Characters() {
   );
 
   return (
-    <BasicPageLayout title="Characters">
-      <Tabs defaultValue="mainCharacters" className="text-center">
-        <TabsList>
-          <TabsTrigger value="mainCharacters">Main Characters</TabsTrigger>
-          <TabsTrigger value="sideCharacters">Side Characters</TabsTrigger>
-        </TabsList>
-        <TabsContent value="mainCharacters">
-          {renderCharacterCards("Main Characters")}
-        </TabsContent>
-        <TabsContent value="sideCharacters">
-          {renderCharacterCards("Supporting Characters")}
-        </TabsContent>
-      </Tabs>
-    </BasicPageLayout>
+    <Tabs defaultValue="mainCharacters" className="text-center">
+      <TabsList>
+        <TabsTrigger value="mainCharacters">Main Characters</TabsTrigger>
+        <TabsTrigger value="sideCharacters">Side Characters</TabsTrigger>
+      </TabsList>
+      <TabsContent value="mainCharacters">
+        {renderCharacterCards("Main Characters")}
+      </TabsContent>
+      <TabsContent value="sideCharacters">
+        {renderCharacterCards("Supporting Characters")}
+      </TabsContent>
+    </Tabs>
   );
 }

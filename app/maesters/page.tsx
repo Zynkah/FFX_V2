@@ -2,30 +2,26 @@
 import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
-interface Aeon {
+interface Maesters {
   id: string;
   role: string;
   image: string;
   image_height: number;
   image_width: number;
   name: string;
-  description: string;
-  link: string;
-  location: string;
 }
 
-export default function Aeons() {
-  const [aeons, setAeons] = useState<Aeon[]>([]);
+export default function Maesters() {
+  const [maesters, setMaesters] = useState<Maesters[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("/api/get-aeons");
+        const response = await fetch("/api/get-maesters");
         const data = await response.json();
-        setAeons(data.aeons);
+        setMaesters(data.maesters);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,29 +32,19 @@ export default function Aeons() {
 
   return (
     <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {Array.isArray(aeons) &&
-        aeons.map((aeon) => (
+      {Array.isArray(maesters) &&
+        maesters.map((maester) => (
           <motion.div
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
-            key={aeon.id}
+            key={maester.id}
           >
-            <BasicCardLayout
-              title={aeon.name}
-              description={aeon.description}
-              link={
-                aeon.link && (
-                  <Link href={aeon.link} className="hover:text-fuchsia-500">
-                    Learn More →
-                  </Link>
-                )
-              }
-            >
+            <BasicCardLayout title={maester.name} description={maester.role}>
               <Image
-                src={aeon.image}
-                width={aeon.image_width}
-                height={aeon.image_height}
-                alt={aeon.name}
+                src={maester.image}
+                width={maester.image_width}
+                height={maester.image_height}
+                alt={maester.name}
                 className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
               />
             </BasicCardLayout>

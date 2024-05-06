@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Sedan } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { TitleNames } from "@/components/title-names";
 
 const sedan = Sedan({ weight: "400", subsets: ["latin"] });
 
@@ -29,7 +31,11 @@ export default function RootLayout({
         >
           <Navbar />
           <Header />
-          {children}
+          <main className="flex min-h-screen flex-col items-center lg:w-3/4 lg:mx-auto">
+            <TitleNames />
+            <div className="my-8 mx-auto">{children}</div>
+          </main>
+          <Analytics />
           <Footer />
         </ThemeProvider>
       </body>

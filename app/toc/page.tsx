@@ -1,4 +1,4 @@
-import BasicPageLayout from "@/components/basic-page-layout";
+
 import Link from "next/link";
 
 
@@ -71,7 +71,7 @@ const tocItems = [
 ];
 export default function TOC() {
   return (
-    <BasicPageLayout title="Table of Contents">
+
       <ul className="grid grid-col md:grid-rows-4 md:grid-flow-col gap-x-20 gap-y-4 text-center">
         {tocItems.map((item, index) => (
           <li key={index}>
@@ -81,6 +81,6 @@ export default function TOC() {
           </li>
         ))}
       </ul>
-    </BasicPageLayout>
+
   );
 }
