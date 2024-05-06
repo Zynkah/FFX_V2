@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Sedan } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
@@ -34,6 +35,7 @@ export default function RootLayout({
             <TitleNames />
             <div className="my-8 mx-auto">{children}</div>
           </main>
+          <Analytics />
           <Footer />
         </ThemeProvider>
       </body>
