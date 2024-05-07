@@ -50,7 +50,7 @@ export default function Scripts() {
         .map((script) => (
           <Card
             key={script.id}
-            className="text-center grid grid-cols-2 items-center p-4"
+            className="text-center grid grid-cols-2 items-center p-4 border-none"
           >
             <CardHeader className="space-y-4">
               <CardTitle>{script.name}</CardTitle>

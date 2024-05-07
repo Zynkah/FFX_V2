@@ -3,14 +3,8 @@ import { useState, useEffect } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Military {
   id: string;

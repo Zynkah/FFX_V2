@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SkeletonCard from "@/components/isLoading";
 
 interface Agencies {
   id: string;
@@ -32,8 +33,10 @@ export default function Agencies() {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {Array.isArray(agencies) &&
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
+      {!agencies.length ? (
+        <SkeletonCard />
+      ) : (
         agencies.map((agency) => (
           <motion.div
             whileHover={{ translateY: -3 }}
@@ -50,7 +53,8 @@ export default function Agencies() {
               />
             </BasicCardLayout>
           </motion.div>
-        ))}
+        ))
+      )}
     </div>
   );
 }

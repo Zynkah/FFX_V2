@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="space-y-12 text-center">
-        <h1 className="text-6xl">Welcome to Spira</h1>
+        <h1 className="text-4xl">Welcome to Spira</h1>
         <div className="relative w-full h-auto lg:w-1/2 lg:mx-auto aspect-video">
           <Image
             priority

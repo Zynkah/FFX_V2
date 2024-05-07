@@ -4,7 +4,7 @@ import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
+import SkeletonCard from "@/components/isLoading";
 interface BlitzballTeams {
   id: string;
   role: string;
@@ -35,25 +35,26 @@ export default function BlitzballTeams() {
   }, []);
 
   return (
-
-      <div className="grid lg:grid-cols-2 gap-4 mx-12">
-        {Array.isArray(teams) &&
-          teams.map((team) => (
-            <motion.div
-              whileHover={{ translateY: -3 }}
-              whileTap={{ scale: 0.95 }}
-              key={team.id}
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
+      {!teams.length ? (
+        <SkeletonCard />
+      ) : (
+        teams.map((team) => (
+          <div key={team.id}>
+            <BasicCardLayout
+              title={team.name}
+              description={team.description}
+              link={
+                team.link && (
+                  <Link href={team.link} className="hover:text-fuchsia-500">
+                    Learn More →
+                  </Link>
+                )
+              }
             >
-              <BasicCardLayout
-                title={team.name}
-                description={team.description}
-                link={
-                  team.link && (
-                    <Link href={team.link} className="hover:text-fuchsia-500">
-                      Learn More →
-                    </Link>
-                  )
-                }
+              <motion.div
+                whileHover={{ translateY: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Image
                   src={team.image}
@@ -62,10 +63,11 @@ export default function BlitzballTeams() {
                   alt={team.name}
                   className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
                 />
-              </BasicCardLayout>
-            </motion.div>
-          ))}
-      </div>
-
+              </motion.div>
+            </BasicCardLayout>
+          </div>
+        ))
+      )}
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface Location {
   id: string;
@@ -34,7 +35,7 @@ export default function Locations() {
   }, []);
 
   const renderLocationCards = (role: String) => (
-    <div className="grid lg:grid-cols-2 gap-4 mx-12">
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
       {locations
         .filter((location) => location.role === role)
         .map((location) => (
@@ -64,15 +65,9 @@ export default function Locations() {
     <>
       <Tabs className="text-center">
         <TabsList>
-          <TabsTrigger value="temples">Temples</TabsTrigger>
-          <TabsTrigger value="agencies">Agencies</TabsTrigger>
+          <Link href='/temples'><TabsTrigger value="temples">Temples</TabsTrigger></Link>
+          <Link href='/agencies'><TabsTrigger value="agencies">Agencies</TabsTrigger></Link>
         </TabsList>
-        <TabsContent value="temples">
-          {/* {renderCharacterCards("Temples")} */}
-        </TabsContent>
-        <TabsContent value="agencies">
-          {/* {renderCharacterCards("Agencies")} */}
-        </TabsContent>
       </Tabs>
       {renderLocationCards("Location")}
     </>

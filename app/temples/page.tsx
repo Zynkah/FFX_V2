@@ -5,6 +5,7 @@ import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SkeletonCard from "@/components/isLoading";
 
 interface Temple {
   id: string;
@@ -36,25 +37,26 @@ export default function Temples() {
   }, []);
 
   return (
-
-      <div className="grid lg:grid-cols-2 gap-4 mx-12">
-        {Array.isArray(temples) &&
-          temples.map((temple) => (
-            <motion.div
-              whileHover={{ translateY: -3 }}
-              whileTap={{ scale: 0.95 }}
-              key={temple.id}
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
+      {!temples.length ? (
+        <SkeletonCard />
+      ) : (
+        temples.map((temple) => (
+          <div key={temple.id}>
+            <BasicCardLayout
+              title={temple.name}
+              description={temple.description}
+              link={
+                temple.link && (
+                  <Link href={temple.link} className="hover:text-fuchsia-500">
+                    Learn More →
+                  </Link>
+                )
+              }
             >
-              <BasicCardLayout
-                title={temple.name}
-                description={temple.description}
-                link={
-                  temple.link && (
-                    <Link href={temple.link} className="hover:text-fuchsia-500">
-                      Learn More →
-                    </Link>
-                  )
-                }
+              <motion.div
+                whileHover={{ translateY: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Image
                   src={temple.image}
@@ -63,10 +65,11 @@ export default function Temples() {
                   alt={temple.name}
                   className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-cover"
                 />
-              </BasicCardLayout>
-            </motion.div>
-          ))}
-      </div>
-
+              </motion.div>
+            </BasicCardLayout>
+          </div>
+        ))
+      )}
+    </div>
   );
 }
