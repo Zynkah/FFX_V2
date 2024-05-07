@@ -4,6 +4,7 @@ import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SkeletonCard from "@/components/isLoading";
 
 interface Aeon {
   id: string;
@@ -36,13 +37,11 @@ export default function Aeons() {
 
   return (
     <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {Array.isArray(aeons) &&
+      {!aeons.length ? (
+        <SkeletonCard />
+      ) : (
         aeons.map((aeon) => (
-          <motion.div
-            whileHover={{ translateY: -3 }}
-            whileTap={{ scale: 0.95 }}
-            key={aeon.id}
-          >
+          <div key={aeon.id}>
             <BasicCardLayout
               title={aeon.name}
               description={aeon.description}
@@ -54,16 +53,22 @@ export default function Aeons() {
                 )
               }
             >
-              <Image
-                src={aeon.image}
-                width={aeon.image_width}
-                height={aeon.image_height}
-                alt={aeon.name}
-                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
-              />
+              <motion.div
+                whileHover={{ translateY: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Image
+                  src={aeon.image}
+                  width={aeon.image_width}
+                  height={aeon.image_height}
+                  alt={aeon.name}
+                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                />
+              </motion.div>
             </BasicCardLayout>
-          </motion.div>
-        ))}
+          </div>
+        ))
+      )}
     </div>
   );
 }

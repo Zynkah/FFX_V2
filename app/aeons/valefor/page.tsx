@@ -48,7 +48,7 @@ export default function Valefor() {
         .map((aeon) => (
           <div key={aeon.name} className="space-y-4">
             <div className="flex flex-row gap-4">
-              <Card className="m-auto p-4">
+              <Card className="m-auto p-4 border-none">
                 <CardDescription>{aeon.description_1}</CardDescription>
               </Card>
               <Image
@@ -68,13 +68,13 @@ export default function Valefor() {
                 alt={aeon.name}
                 className="flex justify-center items-center m-auto rounded-lg  object-scale-down"
               />
-              <Card className="m-auto p-4">
+              <Card className="m-auto p-4 border-none">
                 <CardDescription>{aeon.description_2}</CardDescription>
               </Card>
             </div>
 
             <div className="flex flex-row gap-4">
-              <Card className="m-auto p-4">
+              <Card className="m-auto p-4 border-none">
                 <CardDescription>{aeon.description_3}</CardDescription>
               </Card>
               <Image

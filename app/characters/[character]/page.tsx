@@ -1,7 +1,7 @@
 export function generateStaticParams() {
   return ["Tidus", "Yuna", "Auron", "Kimahri", "Wakka", "Lulu", "Rikku"].map(
-    (character) => ({
-      charId: character,
+    (char) => ({
+      charId: char,
     })
   );
 }
@@ -31,21 +31,17 @@ export default async function Page({ params: { charId } }: Props) {
     `http://localhost:3000/api/get-character-detail`
   );
   const charactersData = await charactersResponse.json();
-  console.log(charactersData);
 
   return (
     <div>
-      {
-        // Array.isArray(charactersData.character_detail) &&
-        charactersData.character_detail
-          // .filter((character: CharacterDetail) => character.name === charId)
-          .map((character: CharacterDetail) => (
-            <div key={character.id}>
-              <h2>{character.name}</h2>
-              <p>{character.description}</p>
-            </div>
-          ))
-      }
+      {charactersData.character_detail
+        // .filter((char: CharacterDetail) => char.name === charId) // change toa charId
+        .map((char: CharacterDetail) => (
+          <div key={char.id}>
+            <h2>{char.name}</h2>
+            <p>{char.description}</p>
+          </div>
+        ))}
     </div>
   );
 }

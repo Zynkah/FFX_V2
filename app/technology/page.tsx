@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
 
 interface Technology {
   id: string;
@@ -37,21 +37,20 @@ export default function Technology() {
       {technology
         .filter((technology) => technology.role === role)
         .map((tech) => (
-          <motion.div
-            whileHover={{ translateY: -3 }}
-            whileTap={{ scale: 0.95 }}
-            key={tech.id}
-          >
-            <BasicCardLayout title={tech.name} description={tech.description}>
-              <Image
+          <Card key={tech.id} className="border-none">
+            <CardHeader>
+ <Image
                 src={tech.image}
                 width={tech.image_width}
                 height={tech.image_height}
                 alt={tech.name}
                 className="flex justify-center items-center m-auto rounded-lg [500px] w-[500px] object-scale-down"
-              />
-            </BasicCardLayout>
-          </motion.div>
+            />
+            <CardTitle className="text-4xl">{tech.name}</CardTitle>
+            </CardHeader>
+            <CardContent className="mx-auto px-12 max-w-prose">{tech.description}</CardContent>
+</Card>
+       
         ))}
     </div>
   );

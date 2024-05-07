@@ -33,7 +33,7 @@ export default function RootLayout({
           <Header />
           <main className="flex min-h-screen flex-col items-center lg:w-3/4 lg:mx-auto">
             <TitleNames />
-            <div className="my-8 mx-auto">{children}</div>
+            <div className="my-8">{children}</div>
           </main>
           <Analytics />
           <Footer />

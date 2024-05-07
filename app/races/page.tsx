@@ -34,7 +34,7 @@ export default function Races() {
   }, []);
 
   const renderRaceCards = (role: String) => (
-    <div className="grid lg:grid-cols-2 gap-4 mx-12">
+    <div className="grid xl:grid-cols-2 gap-4 mx-12">
       {races
         .filter((race) => race.role === role)
         .map((race) => (

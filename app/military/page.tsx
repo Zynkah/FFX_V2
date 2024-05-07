@@ -1,9 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicCardLayout from "@/components/basic-card-layout";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { motion } from "framer-motion";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Military {
   id: string;
@@ -37,54 +38,49 @@ export default function Military() {
       {military
         .filter((military) => military.role === role)
         .map((militia) => (
-          <motion.div
-            whileHover={{ translateY: -3 }}
-            whileTap={{ scale: 0.95 }}
-            key={militia.id}
-          >
-            <BasicCardLayout
-              title={militia.name}
-              description={militia.description}
-            >
+          <Card key={militia.id} className="border-none">
+            <CardHeader>
               <Image
                 src={militia.image}
                 width={militia.image_width}
                 height={militia.image_height}
                 alt={militia.name}
-                className="flex justify-center items-center m-auto rounded-lg [500px] w-[500px] object-scale-down"
+                className="flex justify-center items-center m-auto rounded-lg object-scale-down"
               />
-            </BasicCardLayout>
-          </motion.div>
+              <CardTitle className="text-4xl">{militia.name}</CardTitle>
+            </CardHeader>
+            <CardContent className="mx-auto px-12 max-w-prose">
+              {militia.description}
+            </CardContent>
+          </Card>
         ))}
     </div>
   );
 
   return (
-
-      <Tabs defaultValue="crusaders" className="text-center">
-        <TabsList>
-          <TabsTrigger value="crusaders">Crusaders</TabsTrigger>
-          <TabsTrigger value="guardians">Guardians</TabsTrigger>
-          <TabsTrigger value="warrior monks">Warrior Monks</TabsTrigger>
-          <TabsTrigger value="crimson squad">Crimson Squad</TabsTrigger>
-          <TabsTrigger value="chocobo knights">Chocobo Knights</TabsTrigger>
-        </TabsList>
-        <TabsContent value="crusaders">
-          {renderRaceCards("Crusaders")}
-        </TabsContent>
-        <TabsContent value="guardians">
-          {renderRaceCards("Guardians")}
-        </TabsContent>
-        <TabsContent value="warrior monks">
-          {renderRaceCards("Warrior Monks")}
-        </TabsContent>
-        <TabsContent value="crimson squad">
-          {renderRaceCards("Crimson Squad")}
-        </TabsContent>
-        <TabsContent value="chocobo knights">
-          {renderRaceCards("Chocobo Knights")}
-        </TabsContent>
-      </Tabs>
-
+    <Tabs defaultValue="crusaders" className="text-center">
+      <TabsList>
+        <TabsTrigger value="crusaders">Crusaders</TabsTrigger>
+        <TabsTrigger value="guardians">Guardians</TabsTrigger>
+        <TabsTrigger value="warrior monks">Warrior Monks</TabsTrigger>
+        <TabsTrigger value="crimson squad">Crimson Squad</TabsTrigger>
+        <TabsTrigger value="chocobo knights">Chocobo Knights</TabsTrigger>
+      </TabsList>
+      <TabsContent value="crusaders">
+        {renderRaceCards("Crusaders")}
+      </TabsContent>
+      <TabsContent value="guardians">
+        {renderRaceCards("Guardians")}
+      </TabsContent>
+      <TabsContent value="warrior monks">
+        {renderRaceCards("Warrior Monks")}
+      </TabsContent>
+      <TabsContent value="crimson squad">
+        {renderRaceCards("Crimson Squad")}
+      </TabsContent>
+      <TabsContent value="chocobo knights">
+        {renderRaceCards("Chocobo Knights")}
+      </TabsContent>
+    </Tabs>
   );
 }
