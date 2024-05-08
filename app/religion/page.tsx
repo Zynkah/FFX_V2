@@ -20,8 +20,8 @@ export default function Religion() {
           </Link>
         </TabsList>
       </Tabs>
-      <div className="p-16 max-w-prose">
-        <p className="m-4 text-lg">
+      <div className="p-4 md:p-16 max-w-prose">
+        <p className="text-lg">
           <span className="text-2xl">R</span>eligion is an important part of life for many of the peoples of
           Spira, with a large majority of the population describing themselves
           as <span className="italic"><q>Yevonites</q></span>.

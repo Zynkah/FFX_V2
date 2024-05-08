@@ -52,20 +52,20 @@ export default function Equipment() {
         .map((equip) => (
           <Card key={equip.id} className="border-none">
             <CardHeader>
-              <div className="flex lg:flex-row flex-col">
+              <div className="flex flex-row justify-center items-center m-auto">
                 <Image
                   src={equip.weapon_image}
                   width={equip.weapon_image_width}
                   height={equip.weapon_image_height}
                   alt={equip.weapon_name}
-                  className="flex justify-center items-center m-auto rounded-lg object-scale-down w-[300px] h-[300px]"
+                  className="flex rounded-lg object-scale-down aspect-square size-[180px] md:size-[300px]"
                 />
                 <Image
                   src={equip.armor_image}
                   width={equip.armor_image_width}
                   height={equip.armor_image_height}
                   alt={equip.armor_name}
-                  className="flex justify-center items-center m-auto rounded-lg object-scale-down w-[300px] h-[300px]"
+                  className="flex rounded-lg object-scale-down aspect-square size-[180px] md:size-[300px]"
                 />
               </div>
               <CardTitle>{equip.name}</CardTitle>

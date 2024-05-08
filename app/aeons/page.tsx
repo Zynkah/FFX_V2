@@ -62,7 +62,7 @@ export default function Aeons() {
                   width={aeon.image_width}
                   height={aeon.image_height}
                   alt={aeon.name}
-                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                  className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
                 />
               </motion.div>
             </BasicCardLayout>

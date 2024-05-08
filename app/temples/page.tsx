@@ -63,7 +63,7 @@ export default function Temples() {
                   width={temple.image_width}
                   height={temple.image_height}
                   alt={temple.name}
-                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-cover"
+                  className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-cover"
                 />
               </motion.div>
             </BasicCardLayout>

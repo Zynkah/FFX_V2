@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function SkeletonCard() {
   return (
     
-      <Skeleton className="h-[500px] w-[500px] rounded-lg" />
+      <Skeleton className="size-[250px]  md:size-[500px] rounded-lg" />
    
   );
 }

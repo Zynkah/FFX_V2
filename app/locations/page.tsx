@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import SkeletonCard from "@/components/isLoading";
 
 interface Location {
   id: string;
@@ -36,7 +37,7 @@ export default function Locations() {
 
   const renderLocationCards = (role: String) => (
     <div className="grid xl:grid-cols-2 gap-4 mx-12">
-      {locations
+      {!locations.length ? <SkeletonCard /> : locations
         .filter((location) => location.role === role)
         .map((location) => (
           <motion.div
@@ -53,7 +54,7 @@ export default function Locations() {
                 width={location.image_width}
                 height={location.image_height}
                 alt={location.name}
-                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-cover"
+                className="flex justify-center items-center m-auto rounded-lg aspect-square md:size[500px] object-cover"
               />
             </BasicCardLayout>
           </motion.div>
