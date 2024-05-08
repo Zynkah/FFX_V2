@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
- const pathname = usePathname();
+  const pathname = usePathname();
 
   return (
     <header className="my-10">
@@ -14,8 +14,8 @@ export default function Header() {
         <Image
           priority
           src="/images/logo.jpg"
-          height={pathname === "/" ? 600 : 300} 
-          width={pathname === "/" ? 390 : 195} 
+          height={pathname === "/" ? 600 : 300}
+          width={pathname === "/" ? 390 : 195}
           alt="FFX Logo"
           className="mx-auto rounded-lg w-auto h-auto"
         />

@@ -46,11 +46,13 @@ export function Navbar() {
           />
         </Link>
       </div>
-      <NavigationMenu
-        className={`mx-auto mobile-nav-content ${isNavOpen ? "open" : ""}`}
-      >
-        <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
-
+      <div className="relative">
+        <NavigationMenu
+          className={`static mx-auto md:relative mobile-nav-content ${
+            isNavOpen ? "open" : ""
+          }`}
+        >
+          <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
             <NavigationMenuItem>
               <Link href="/characters" legacyBehavior passHref>
                 <NavigationMenuLink
@@ -61,64 +63,65 @@ export function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-  
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <ListItem href="/races" title="Races">
-                  The variety of races that exist in the world. Includes
-                  Humanoids, Demi-Humans and Creatures.
-                </ListItem>
-                <ListItem href="/scripts" title="Scripts">
-                  Details on the unique Scripts. Includes Sprian, Al Bhed and
-                  Yevon scripts.
-                </ListItem>
-                <ListItem href="/religion" title="Religion">
-                  Information on the Yevon religion. Includes Maesters,
-                  Summoners and Aeons.
-                </ListItem>
-                <ListItem href="/military" title="Military">
-                  Crusaders, Guardians, Warrior Monks, Crimson Squad and Chocobo
-                  Knights.
-                </ListItem>
-                <ListItem href="/technology" title="Technology">
-                  Vehicles, Machina, Currency, Fire Arms and Hand Held items
-                  that can be used to take control of the world.
-                </ListItem>
-                <ListItem href="/blitzball" title="Blitzball">
-                  The sport that unites everyone in Spira and helps the people
-                  forget about the never ending doom of Sin.
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/locations" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Locations
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
+              <NavigationMenuContent className="w-[200px]">
+                <ul className=" grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <ListItem href="/races" title="Races">
+                    The variety of races that exist in the world. Includes
+                    Humanoids, Demi-Humans and Creatures.
+                  </ListItem>
+                  <ListItem href="/scripts" title="Scripts">
+                    Details on the unique Scripts. Includes Sprian, Al Bhed and
+                    Yevon scripts.
+                  </ListItem>
+                  <ListItem href="/religion" title="Religion">
+                    Information on the Yevon religion. Includes Maesters,
+                    Summoners and Aeons.
+                  </ListItem>
+                  <ListItem href="/military" title="Military">
+                    Crusaders, Guardians, Warrior Monks, Crimson Squad and
+                    Chocobo Knights.
+                  </ListItem>
+                  <ListItem href="/technology" title="Technology">
+                    Vehicles, Machina, Currency, Fire Arms and Hand Held items
+                    that can be used to take control of the world.
+                  </ListItem>
+                  <ListItem href="/blitzball" title="Blitzball">
+                    The sport that unites everyone in Spira and helps the people
+                    forget about the never ending doom of Sin.
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/equipment" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Equipment
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/locations" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Locations
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/walkthrough" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Walkthrough
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+            <NavigationMenuItem>
+              <Link href="/equipment" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Equipment
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/walkthrough" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Walkthrough
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
       <div className="absolute right-5 top-0 md:top-2">
         <ModeToggle />
       </div>
