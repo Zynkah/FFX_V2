@@ -16,37 +16,52 @@ import {
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "./mode-toggle";
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { Menu } from "lucide-react";
 
 export function Navbar() {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  // const handleNavItemClick = () => {
-  //   setIsMenuOpen(false);
-  // }
+  const handleNavItemClick = () => {
+    setIsNavOpen(false);
+  };
 
   return (
-    <div className="z-10 sticky top-0 p-2 bg-background dark:bg-background border-b-[0.1rem] shadow-lg">
-      <NavigationMenu className="mx-auto">
-        <div className="fixed left-5">
-          <Link href="/" passHref>
+    <div className="z-10 sticky top-0 md:p-2 p-5 bg-background dark:bg-background border-b-[0.1rem] shadow-lg">
+      <Button
+        className="absolute left-2 top-0 border-none shadow-none hover:scale-110 md:hidden bg-transparent hover:bg-background-muted text-black dark:bg-background dark:text-white"
+        onClick={() => setIsNavOpen(!isNavOpen)}
+      >
+        <Menu size={30} />
+      </Button>
+      <div className="absolute left-5 hidden md:block">
+        <Link href="/" passHref>
           <Image
             priority
             src="/images/logo.jpg"
-            height={30}
-            width={46}
-              alt="FFX Logo"
-              className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ease-in-out rounded-lg"
-            />
-            </Link>
-        </div>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <Link href="/characters" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Characters
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+            height={44}
+            width={60}
+            alt="FFX Logo"
+            className="cursor-pointer hover:opacity-80 transition-opacity duration-200 ease-in-out rounded-lg"
+          />
+        </Link>
+      </div>
+      <NavigationMenu
+        className={`mx-auto mobile-nav-content ${isNavOpen ? "open" : ""}`}
+      >
+        <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
+
+            <NavigationMenuItem>
+              <Link href="/characters" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={handleNavItemClick}
+                >
+                  Characters
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+  
           <NavigationMenuItem>
             <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -86,6 +101,7 @@ export function Navbar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <Link href="/equipment" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -93,6 +109,7 @@ export function Navbar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <Link href="/walkthrough" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -101,10 +118,10 @@ export function Navbar() {
             </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
-        <div className="fixed right-5">
-          <ModeToggle />
-        </div>
       </NavigationMenu>
+      <div className="absolute right-5 top-0 md:top-2">
+        <ModeToggle />
+      </div>
     </div>
   );
 }

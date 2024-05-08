@@ -74,3 +74,26 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav-content {
+    display: none;
+  }
+
+  .mobile-nav-content.open {
+    display: block;
+  }
+
+  .mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 2.5rem;
+    left: 0;
+    overflow-y: auto;
+  }
+}
