@@ -32,8 +32,7 @@ export default function Maesters() {
 
   return (
     <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {Array.isArray(maesters) &&
-        maesters.map((maester) => (
+      {maesters.map((maester) => (
           <motion.div
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
@@ -45,7 +44,7 @@ export default function Maesters() {
                 width={maester.image_width}
                 height={maester.image_height}
                 alt={maester.name}
-                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                className="flex justify-center items-center m-auto rounded-lg aspect-square md:h-[500px] md:w-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>

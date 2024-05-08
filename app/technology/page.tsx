@@ -33,7 +33,7 @@ export default function Technology() {
   }, []);
 
   const renderRaceCards = (role: String) => (
-    <div className="mx-12">
+    <div className="md:mx-12 p-4">
       {technology
         .filter((technology) => technology.role === role)
         .map((tech) => (
@@ -48,7 +48,7 @@ export default function Technology() {
             />
             <CardTitle className="text-4xl">{tech.name}</CardTitle>
             </CardHeader>
-            <CardContent className="mx-auto px-12 max-w-prose">{tech.description}</CardContent>
+            <CardContent className="mx-auto md:px-12 max-w-prose">{tech.description}</CardContent>
 </Card>
        
         ))}

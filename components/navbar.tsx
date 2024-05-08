@@ -27,18 +27,18 @@ export function Navbar() {
   };
 
   return (
-    <div className="z-10 sticky top-0 md:p-2 p-5 bg-background dark:bg-background border-b-[0.1rem] shadow-lg">
-      <Button
-        className="absolute left-2 top-0 border-none shadow-none hover:scale-110 md:hidden bg-transparent hover:bg-background-muted text-black dark:bg-background dark:text-white"
+    <div className="z-10 sticky top-0 md:p-2 p-6 bg-background dark:bg-background border-b-[0.1rem] shadow-lg">
+      <Button variant='ghost' size='sm'
+        className="absolute left-2 top-1 border-none shadow-none hover:scale-110 md:hidden bg-transparent  text-black dark:bg-background dark:text-white"
         onClick={() => setIsNavOpen(!isNavOpen)}
       >
-        <Menu size={30} />
+        <Menu size={40} />
       </Button>
       <div className="absolute left-5 hidden md:block">
         <Link href="/" passHref>
           <Image
             priority
-            src="/images/logo.jpg"
+            src="/images/logo2.png"
             height={44}
             width={60}
             alt="FFX Logo"
@@ -119,7 +119,7 @@ export function Navbar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="absolute right-5 top-0 md:top-2">
+      <div className="absolute right-5 top-1 md:top-2">
         <ModeToggle />
       </div>
     </div>

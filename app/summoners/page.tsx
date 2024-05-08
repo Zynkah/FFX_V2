@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/basic-card-layout";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SkeletonCard from "@/components/isLoading";
 
 interface Summoner {
   id: string;
@@ -33,7 +34,7 @@ export default function Summoners() {
 
   return (
     <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {Array.isArray(summoners) &&
+      {!summoners.length ? <SkeletonCard /> :
         summoners.map((summoner) => (
           <motion.div
             whileHover={{ translateY: -3 }}
@@ -52,7 +53,7 @@ export default function Summoners() {
                     width={summoner.image_width}
                     height={summoner.image_height}
                     alt={summoner.name}
-                    className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                    className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
                   />
                 )}
             </BasicCardLayout>

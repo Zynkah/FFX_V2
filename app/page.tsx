@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="space-y-12 text-center">
+      <div className="md:space-y-12 space-y-8 text-center">
         <h1 className="text-4xl">Welcome to Spira</h1>
         <div className="relative w-full h-auto lg:w-1/2 lg:mx-auto aspect-video">
           <Image
@@ -12,10 +12,10 @@ export default function Home() {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt="FFX Logo"
-            className="mx-auto rounded-lg"
+            className="mx-auto md:rounded-lg"
           />
         </div>
-        <p className="px-24 pb-12">
+        <p className="md:px-24 px-4 md:pb-12 pb-8">
           The world of Spira is caught in a cycle of death. Its people live in
           fear of the great menace known only as Sin. The people seek solace in
           the temples of Yevon. The Yevon faith teaches that the only way to

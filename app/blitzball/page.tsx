@@ -61,7 +61,7 @@ export default function BlitzballTeams() {
                   width={team.image_width}
                   height={team.image_height}
                   alt={team.name}
-                  className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-scale-down"
+                  className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
                 />
               </motion.div>
             </BasicCardLayout>

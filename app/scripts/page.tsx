@@ -44,24 +44,24 @@ export default function Scripts() {
   }, []);
 
   const renderScriptCards = (role: String) => (
-    <div className="mx-12">
+    <div className="md:mx-12">
       {scripts
         .filter((script) => script.role === role)
         .map((script) => (
           <Card
             key={script.id}
-            className="text-center grid grid-cols-2 items-center p-4 border-none"
+            className="text-center grid md:grid-cols-2 items-center md:p-4 border-none"
           >
             <CardHeader className="space-y-4">
-              <CardTitle>{script.name}</CardTitle>
-              <CardDescription>{script.description}</CardDescription>
+              <CardTitle className="text-3xl">{script.name}</CardTitle>
               <Image
                 src={script.image}
                 width={script.image_width}
                 height={script.image_height}
                 alt={script.image_name}
-                className="rounded-lg mx-auto"
+                className="rounded-lg mx-auto h-auto w-auto"
               />
+              <CardDescription>{script.description}</CardDescription>
             </CardHeader>
             <CardContent>
               <Image
@@ -69,7 +69,7 @@ export default function Scripts() {
                 width={script.script_image_width}
                 height={script.script_image_height}
                 alt={script.script_image_name}
-                className="rounded-lg"
+                className="rounded-lg h-auto w-auto"
               />
             </CardContent>
           </Card>

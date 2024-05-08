@@ -49,7 +49,7 @@ export default function Agencies() {
                 width={agency.image_width}
                 height={agency.image_height}
                 alt={agency.name}
-                className="flex justify-center items-center m-auto rounded-lg h-[500px] w-[500px] object-cover"
+                className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-cover"
               />
             </BasicCardLayout>
           </motion.div>

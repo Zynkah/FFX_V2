@@ -34,7 +34,7 @@ export default function Military() {
   }, []);
 
   const renderRaceCards = (role: String) => (
-    <div className="mx-12">
+    <div className="md:mx-12 p-4">
       {military
         .filter((military) => military.role === role)
         .map((militia) => (
@@ -49,7 +49,7 @@ export default function Military() {
               />
               <CardTitle className="text-4xl">{militia.name}</CardTitle>
             </CardHeader>
-            <CardContent className="mx-auto px-12 max-w-prose">
+            <CardContent className="mx-auto md:px-12 max-w-prose">
               {militia.description}
             </CardContent>
           </Card>
