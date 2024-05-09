@@ -5,6 +5,7 @@ import BasicCardLayout from "@/components/basic-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ScrollingTabs from "@/components/scrolling-tabs";
 
 interface Race {
   id: string;
@@ -59,11 +60,13 @@ export default function Races() {
 
   return (
     <Tabs defaultValue="humanoids" className="text-center">
-      <TabsList>
-        <TabsTrigger value="humanoids">Humanoids</TabsTrigger>
-        <TabsTrigger value="demiHumans">Demi-Humans</TabsTrigger>
-        <TabsTrigger value="creatures">Creatures</TabsTrigger>
-      </TabsList>
+      <ScrollingTabs>
+        <TabsList>
+          <TabsTrigger value="humanoids">Humanoids</TabsTrigger>
+          <TabsTrigger value="demiHumans">Demi-Humans</TabsTrigger>
+          <TabsTrigger value="creatures">Creatures</TabsTrigger>
+        </TabsList>
+      </ScrollingTabs>
       <TabsContent value="humanoids">
         {renderRaceCards("Humanoids")}
       </TabsContent>

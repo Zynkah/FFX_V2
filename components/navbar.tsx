@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { sideNavItems } from "@/data/nav-items";
 
 import { cn } from "@/lib/utils";
 import {
@@ -27,9 +28,12 @@ export function Navbar() {
   };
 
   return (
-    <div className="z-10 sticky top-0 md:p-2 p-6 bg-background dark:bg-background border-b-[0.1rem] shadow-lg">
-      <Button variant='ghost' size='sm'
-        className="absolute left-2 top-1 border-none shadow-none hover:scale-110 md:hidden bg-transparent  text-black dark:bg-background dark:text-white"
+    <div className="z-10 sticky top-0 md:p-2 p-6 bg-background border-b-[0.1rem] shadow-lg">
+      
+      <Button
+        variant="ghost"
+        size="sm"
+        className="absolute left-2 top-1 border-none shadow-none hover:scale-110 md:hidden bg-transparent text-black dark:bg-background dark:text-white"
         onClick={() => setIsNavOpen(!isNavOpen)}
       >
         <Menu size={40} />
@@ -50,53 +54,37 @@ export function Navbar() {
         className={`mx-auto mobile-nav-content ${isNavOpen ? "open" : ""}`}
       >
         <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
+          <NavigationMenuItem>
+            <Link href="/characters" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                onClick={handleNavItemClick}
+              >
+                Characters
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <Link href="/characters" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={navigationMenuTriggerStyle()}
-                  onClick={handleNavItemClick}
-                >
-                  Characters
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-  
           <NavigationMenuItem>
             <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <ListItem href="/races" title="Races">
-                  The variety of races that exist in the world. Includes
-                  Humanoids, Demi-Humans and Creatures.
-                </ListItem>
-                <ListItem href="/scripts" title="Scripts">
-                  Details on the unique Scripts. Includes Sprian, Al Bhed and
-                  Yevon scripts.
-                </ListItem>
-                <ListItem href="/religion" title="Religion">
-                  Information on the Yevon religion. Includes Maesters,
-                  Summoners and Aeons.
-                </ListItem>
-                <ListItem href="/military" title="Military">
-                  Crusaders, Guardians, Warrior Monks, Crimson Squad and Chocobo
-                  Knights.
-                </ListItem>
-                <ListItem href="/technology" title="Technology">
-                  Vehicles, Machina, Currency, Fire Arms and Hand Held items
-                  that can be used to take control of the world.
-                </ListItem>
-                <ListItem href="/blitzball" title="Blitzball">
-                  The sport that unites everyone in Spira and helps the people
-                  forget about the never ending doom of Sin.
-                </ListItem>
-              </ul>
+
+            <NavigationMenuContent className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              {sideNavItems.map((sidenav: any) => (
+                <ul key={sidenav}>
+                  <ListItem href={sidenav.link} title={sidenav.name}>
+                    {sidenav.description}
+                  </ListItem>
+                </ul>
+              ))}
             </NavigationMenuContent>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
             <Link href="/locations" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                onClick={handleNavItemClick}
+              >
                 Locations
               </NavigationMenuLink>
             </Link>
@@ -104,7 +92,10 @@ export function Navbar() {
 
           <NavigationMenuItem>
             <Link href="/equipment" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                onClick={handleNavItemClick}
+              >
                 Equipment
               </NavigationMenuLink>
             </Link>
@@ -112,7 +103,10 @@ export function Navbar() {
 
           <NavigationMenuItem>
             <Link href="/walkthrough" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                onClick={handleNavItemClick}
+              >
                 Walkthrough
               </NavigationMenuLink>
             </Link>

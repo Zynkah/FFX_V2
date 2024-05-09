@@ -1,11 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import ScrollingTabs from "@/components/scrolling-tabs";
 interface Military {
   id: string;
   role: string;
@@ -58,14 +56,16 @@ export default function Military() {
   );
 
   return (
-    <Tabs defaultValue="crusaders" className="text-center">
-      <TabsList>
-        <TabsTrigger value="crusaders">Crusaders</TabsTrigger>
-        <TabsTrigger value="guardians">Guardians</TabsTrigger>
-        <TabsTrigger value="warrior monks">Warrior Monks</TabsTrigger>
-        <TabsTrigger value="crimson squad">Crimson Squad</TabsTrigger>
-        <TabsTrigger value="chocobo knights">Chocobo Knights</TabsTrigger>
-      </TabsList>
+    <Tabs defaultValue="crusaders" className="justify-center text-center">
+      <ScrollingTabs>
+          <TabsList>
+            <TabsTrigger value="crusaders">Crusaders</TabsTrigger>
+            <TabsTrigger value="guardians">Guardians</TabsTrigger>
+            <TabsTrigger value="warrior monks">Warrior Monks</TabsTrigger>
+            <TabsTrigger value="crimson squad">Crimson Squad</TabsTrigger>
+            <TabsTrigger value="chocobo knights">Chocobo Knights</TabsTrigger>
+          </TabsList>
+      </ScrollingTabs>
       <TabsContent value="crusaders">
         {renderRaceCards("Crusaders")}
       </TabsContent>

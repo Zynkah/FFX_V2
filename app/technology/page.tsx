@@ -2,8 +2,14 @@
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import ScrollingTabs from "@/components/scrolling-tabs";
 
 interface Technology {
   id: string;
@@ -39,25 +45,26 @@ export default function Technology() {
         .map((tech) => (
           <Card key={tech.id} className="border-none">
             <CardHeader>
- <Image
+              <Image
                 src={tech.image}
                 width={tech.image_width}
                 height={tech.image_height}
                 alt={tech.name}
                 className="flex justify-center items-center m-auto rounded-lg [500px] w-[500px] object-scale-down"
-            />
-            <CardTitle className="text-4xl">{tech.name}</CardTitle>
+              />
+              <CardTitle className="text-4xl">{tech.name}</CardTitle>
             </CardHeader>
-            <CardContent className="mx-auto md:px-12 max-w-prose">{tech.description}</CardContent>
-</Card>
-       
+            <CardContent className="mx-auto md:px-12 max-w-prose">
+              {tech.description}
+            </CardContent>
+          </Card>
         ))}
     </div>
   );
 
   return (
-
-      <Tabs defaultValue="machina" className="text-center">
+    <Tabs defaultValue="machina" className="text-center">
+      <ScrollingTabs>
         <TabsList>
           <TabsTrigger value="machina">Machina</TabsTrigger>
           <TabsTrigger value="movie sphere">Movie Sphere</TabsTrigger>
@@ -66,19 +73,19 @@ export default function Technology() {
           <TabsTrigger value="vehicle">Vehicle</TabsTrigger>
           <TabsTrigger value="hand held items">Hand Held Items</TabsTrigger>
         </TabsList>
-        <TabsContent value="machina">{renderRaceCards("Machina")}</TabsContent>
-        <TabsContent value="movie sphere">
-          {renderRaceCards("Movie Sphere")}
-        </TabsContent>
-        <TabsContent value="gil">{renderRaceCards("Gil")}</TabsContent>
-        <TabsContent value="fire arms">
-          {renderRaceCards("Fire Arms")}
-        </TabsContent>
-        <TabsContent value="vehicle">{renderRaceCards("Vehicle")}</TabsContent>
-        <TabsContent value="hand held items">
-          {renderRaceCards("Hand Held Items")}
-        </TabsContent>
-      </Tabs>
-
+      </ScrollingTabs>
+      <TabsContent value="machina">{renderRaceCards("Machina")}</TabsContent>
+      <TabsContent value="movie sphere">
+        {renderRaceCards("Movie Sphere")}
+      </TabsContent>
+      <TabsContent value="gil">{renderRaceCards("Gil")}</TabsContent>
+      <TabsContent value="fire arms">
+        {renderRaceCards("Fire Arms")}
+      </TabsContent>
+      <TabsContent value="vehicle">{renderRaceCards("Vehicle")}</TabsContent>
+      <TabsContent value="hand held items">
+        {renderRaceCards("Hand Held Items")}
+      </TabsContent>
+    </Tabs>
   );
 }

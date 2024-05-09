@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import ScrollingTabs from "@/components/scrolling-tabs";
 
 interface Script {
   id: string;
@@ -79,11 +80,13 @@ export default function Scripts() {
 
   return (
     <Tabs defaultValue="spiran" className="text-center">
-      <TabsList>
-        <TabsTrigger value="spiran">Spiran Script</TabsTrigger>
-        <TabsTrigger value="alBhed">Al Bhed Script</TabsTrigger>
-        <TabsTrigger value="yevon">Yevon Script</TabsTrigger>
-      </TabsList>
+      <ScrollingTabs>
+        <TabsList>
+          <TabsTrigger value="spiran">Spiran Script</TabsTrigger>
+          <TabsTrigger value="alBhed">Al Bhed Script</TabsTrigger>
+          <TabsTrigger value="yevon">Yevon Script</TabsTrigger>
+        </TabsList>
+      </ScrollingTabs>
       <TabsContent value="spiran">
         {renderScriptCards("Spiran Scripts")}
       </TabsContent>

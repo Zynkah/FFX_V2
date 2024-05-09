@@ -1,17 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import ScrollingTabs from "@/components/scrolling-tabs";
 
 interface Equipment {
   id: string;
@@ -80,15 +73,17 @@ export default function Equipment() {
 
   return (
     <Tabs defaultValue="tidus" className="text-center">
-      <TabsList>
-        <TabsTrigger value="tidus">Tidus</TabsTrigger>
-        <TabsTrigger value="yuna">Yuna</TabsTrigger>
-        <TabsTrigger value="auron">Auron</TabsTrigger>
-        <TabsTrigger value="kimahri">Kimahri</TabsTrigger>
-        <TabsTrigger value="wakka">Wakka</TabsTrigger>
-        <TabsTrigger value="lulu">Lulu</TabsTrigger>
-        <TabsTrigger value="rikku">Rikku</TabsTrigger>
-      </TabsList>
+      <ScrollingTabs>
+        <TabsList>
+          <TabsTrigger value="tidus">Tidus</TabsTrigger>
+          <TabsTrigger value="yuna">Yuna</TabsTrigger>
+          <TabsTrigger value="auron">Auron</TabsTrigger>
+          <TabsTrigger value="kimahri">Kimahri</TabsTrigger>
+          <TabsTrigger value="wakka">Wakka</TabsTrigger>
+          <TabsTrigger value="lulu">Lulu</TabsTrigger>
+          <TabsTrigger value="rikku">Rikku</TabsTrigger>
+        </TabsList>
+      </ScrollingTabs>
       <TabsContent value="tidus">
         {renderRaceCards("Tidus Equipment")}
       </TabsContent>
