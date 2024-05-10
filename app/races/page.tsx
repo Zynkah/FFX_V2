@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import BasicCardLayout from "@/components/basic-card-layout";
+import BasicCardLayout from "@/components/clickable-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { motion } from "framer-motion";
