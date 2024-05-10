@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import BasicCardLayout from "@/components/basic-card-layout";
+import BasicCardLayout from "@/components/clickable-card-layout";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
