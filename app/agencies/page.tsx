@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import BasicCardLayout from "@/components/clickable-card-layout";
+import {
+  Card,
+  CardTitle,
+} from "@/components/ui/card";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import SkeletonCard from "@/components/isLoading";
 
 interface Agencies {
@@ -38,21 +40,18 @@ export default function Agencies() {
         <SkeletonCard />
       ) : (
         agencies.map((agency) => (
-          <motion.div
-            whileHover={{ translateY: -3 }}
-            whileTap={{ scale: 0.95 }}
-            key={agency.id}
-          >
-            <BasicCardLayout title={agency.name} description={agency.role}>
-              <Image
+       
+        <Card key={agency.id} className="border-none">
+            <CardTitle className="text-center my-6">{agency.name}</CardTitle>
+            <Image
                 src={agency.image}
                 width={agency.image_width}
                 height={agency.image_height}
                 alt={agency.name}
                 className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-cover"
-              />
-            </BasicCardLayout>
-          </motion.div>
+            />
+            
+       </Card>
         ))
       )}
     </div>

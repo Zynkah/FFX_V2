@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export default function Locations() {
   }, []);
 
   const renderLocationCards = (role: String) => (
-    <div className="grid xl:grid-cols-2 gap-4 mx-12">
+    <div className="grid xl:grid-cols-2 gap-4 mx-12 mt-6">
       {!locations.length ? (
         <SkeletonCard />
       ) : (

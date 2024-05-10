@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ReligionTabs from "@/components/religion-tabs";
 
 interface Maesters {
   id: string;
@@ -31,8 +32,10 @@ export default function Maesters() {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-4 mx-12">
-      {maesters.map((maester) => (
+    <>
+      <ReligionTabs />
+      <div className="grid lg:grid-cols-2 gap-4 mx-12 mt-6">
+        {maesters.map((maester) => (
           <motion.div
             whileHover={{ translateY: -3 }}
             whileTap={{ scale: 0.95 }}
@@ -49,6 +52,7 @@ export default function Maesters() {
             </BasicCardLayout>
           </motion.div>
         ))}
-    </div>
+      </div>
+    </>
   );
 }
