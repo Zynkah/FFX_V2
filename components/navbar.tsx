@@ -29,7 +29,6 @@ export function Navbar() {
 
   return (
     <div className="z-10 sticky top-0 md:p-2 p-6 bg-background border-b-[0.1rem] shadow-lg">
-      
       <Button
         variant="ghost"
         size="sm"
@@ -50,69 +49,73 @@ export function Navbar() {
           />
         </Link>
       </div>
-      <NavigationMenu
-        className={`mx-auto mobile-nav-content ${isNavOpen ? "open" : ""}`}
-      >
-        <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
-          <NavigationMenuItem>
-            <Link href="/characters" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                onClick={handleNavItemClick}
-              >
-                Characters
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+      <div className="relative">
+        <NavigationMenu
+          className={`static md:relative mx-auto mobile-nav-content ${
+            isNavOpen ? "open" : ""
+          }`}
+        >
+          <NavigationMenuList className="mobile-menu-list border md:border-none rounded-lg gap-4 bg-background p-4 md:p-0">
+            <NavigationMenuItem>
+              <Link href="/characters" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={handleNavItemClick}
+                >
+                  Characters
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Culture</NavigationMenuTrigger>
 
-            <NavigationMenuContent className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              {sideNavItems.map((sidenav: any) => (
-                <ul key={sidenav}>
-                  <ListItem href={sidenav.link} title={sidenav.name}>
-                    {sidenav.description}
-                  </ListItem>
-                </ul>
-              ))}
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+              <NavigationMenuContent className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                {sideNavItems.map((sidenav: any) => (
+                  <ul key={sidenav}>
+                    <ListItem href={sidenav.link} title={sidenav.name}>
+                      {sidenav.description}
+                    </ListItem>
+                  </ul>
+                ))}
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/locations" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                onClick={handleNavItemClick}
-              >
-                Locations
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/locations" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={handleNavItemClick}
+                >
+                  Locations
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/equipment" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                onClick={handleNavItemClick}
-              >
-                Equipment
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/equipment" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={handleNavItemClick}
+                >
+                  Equipment
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/walkthrough" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                onClick={handleNavItemClick}
-              >
-                Walkthrough
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+            <NavigationMenuItem>
+              <Link href="/walkthrough" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  onClick={handleNavItemClick}
+                >
+                  Walkthrough
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
       <div className="absolute right-5 top-1 md:top-2">
         <ModeToggle />
       </div>
