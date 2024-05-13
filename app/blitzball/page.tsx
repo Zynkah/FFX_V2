@@ -42,6 +42,7 @@ export default function BlitzballTeams() {
         teams.map((team) => (
           <div key={team.id}>
             <BasicCardLayout
+              key={team.id}
               title={team.name}
               description={team.description}
               link={

@@ -50,6 +50,7 @@ export default function Locations() {
               key={location.id}
             >
               <BasicCardLayout
+                key={location.id}
                 title={location.name}
                 description={location.description}
               >

@@ -14,6 +14,7 @@ import {
 import { motion } from "framer-motion";
 
 interface BasicCardLayoutProps {
+  key: string;
   title: string;
   description: string;
   link?: React.ReactNode;
@@ -28,12 +29,14 @@ const itemVariants = {
 };
 
 export default function BasicCardLayout({
+  key,
   title,
   description,
   link,
   children,
 }: BasicCardLayoutProps) {
   return (
+    <div key={key}>
     <Card className="relative hover:shadow-xl duration-500 ease-in-out">
       <CardHeader>
         <Accordion type="single" collapsible>
@@ -74,5 +77,6 @@ export default function BasicCardLayout({
         </Accordion>
       </CardHeader>
     </Card>
+     </div>
   );
 }

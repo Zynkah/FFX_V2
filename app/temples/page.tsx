@@ -44,6 +44,7 @@ export default function Temples() {
         temples.map((temple) => (
           <div key={temple.id}>
             <BasicCardLayout
+              key={temple.id}
               title={temple.name}
               description={temple.description}
               link={

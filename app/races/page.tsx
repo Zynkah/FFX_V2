@@ -44,7 +44,11 @@ export default function Races() {
             whileTap={{ scale: 0.95 }}
             key={race.id}
           >
-            <BasicCardLayout title={race.name} description={race.description}>
+            <BasicCardLayout
+              key={race.id}
+              title={race.name}
+              description={race.description}
+            >
               <Image
                 src={race.image}
                 width={race.image_width}

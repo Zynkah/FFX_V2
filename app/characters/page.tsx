@@ -44,35 +44,34 @@ export default function Characters() {
         characters
           .filter((character) => character.role === role)
           .map((character) => (
-            <div key={character.id}>
-              <BasicCardLayout
-                title={character.name}
-                description={character.description}
-                link={
-                  character.link && (
-                    <Link
-                      href={character.link}
-                      className="hover:text-fuchsia-500"
-                    >
-                      Learn More →
-                    </Link>
-                  )
-                }
+            <BasicCardLayout
+              key={character.id}
+              title={character.name}
+              description={character.description}
+              link={
+                character.link && (
+                  <Link
+                    href={character.link}
+                    className="hover:text-fuchsia-500"
+                  >
+                    Learn More →
+                  </Link>
+                )
+              }
+            >
+              <motion.div
+                whileHover={{ translateY: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <motion.div
-                  whileHover={{ translateY: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Image
-                    src={character.image}
-                    width={character.image_width}
-                    height={character.image_height}
-                    alt={character.name}
-                    className="flex justify-center items-center m-auto rounded-lg md:h-[500px] md:w-[500px] aspect-square object-scale-down"
-                  />
-                </motion.div>
-              </BasicCardLayout>
-            </div>
+                <Image
+                  src={character.image}
+                  width={character.image_width}
+                  height={character.image_height}
+                  alt={character.name}
+                  className="flex justify-center items-center m-auto rounded-lg md:h-[500px] md:w-[500px] aspect-square object-scale-down"
+                />
+              </motion.div>
+            </BasicCardLayout>
           ))
       )}
     </div>

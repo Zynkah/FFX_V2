@@ -46,6 +46,7 @@ export default function Aeons() {
           aeons.map((aeon) => (
             <div key={aeon.id}>
               <BasicCardLayout
+                key={aeon.id}
                 title={aeon.name}
                 description={aeon.description}
                 link={
