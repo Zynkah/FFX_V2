@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import AeonDetailCard from "@/components/aeon-card";
 import { AeonDetails } from "@/data/aeon-detail-props";
 
-export default function Valefor() {
+export default function Shiva() {
   const [aeonDetails, setAeonDetails] = useState<AeonDetails[]>([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Valefor() {
   return (
     <div>
       {aeonDetails
-        .filter((aeon) => aeon.name === "Valefor")
+        .filter((aeon) => aeon.name === "Shiva")
         .map((aeon) => (
           <AeonDetailCard
             key={aeon.id}
