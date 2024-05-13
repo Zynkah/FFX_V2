@@ -1,29 +1,13 @@
 "use client";
 
-import ScrollingTabs from "@/components/scrolling-tabs";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ReligionTabs from "@/components/religion-tabs";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Religion() {
   return (
     <>
-      <Tabs className="text-center">
-        <ScrollingTabs>
-          <TabsList>
-            <Link href="/maesters">
-              <TabsTrigger value="maesters">Maesters</TabsTrigger>
-            </Link>
-            <Link href="/summoners">
-              <TabsTrigger value="summoners">Summoners</TabsTrigger>
-            </Link>
-            <Link href="/aeons">
-              <TabsTrigger value="aeons">Aeons</TabsTrigger>
-            </Link>
-          </TabsList>
-        </ScrollingTabs>
-      </Tabs>
-      <div className="p-4 md:p-16 max-w-prose">
+      <ReligionTabs />
+      <div className="p-4 md:p-16 max-w-prose mx-auto">
         <p className="text-lg">
           <span className="text-2xl">R</span>eligion is an important part of
           life for many of the peoples of Spira, with a large majority of the
