@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import SkeletonCard from "@/components/isLoading";
 
 interface Temple {
@@ -55,10 +54,6 @@ export default function Temples() {
                 )
               }
             >
-              <motion.div
-                whileHover={{ translateY: -3 }}
-                whileTap={{ scale: 0.95 }}
-              >
                 <Image
                   src={temple.image}
                   width={temple.image_width}
@@ -66,7 +61,6 @@ export default function Temples() {
                   alt={temple.name}
                   className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-cover"
                 />
-              </motion.div>
             </BasicCardLayout>
           </div>
         ))

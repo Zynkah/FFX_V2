@@ -54,7 +54,7 @@ export default function Races() {
                 width={race.image_width}
                 height={race.image_height}
                 alt={race.name}
-                className="flex justify-center items-center m-auto rounded-lg md:h-[500px] md:w-[500px] aspect-square object-scale-down"
+                className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>

@@ -6,7 +6,7 @@ interface ScrollingTabsProps {
 
 export default function ScrollingTabs({ children }: ScrollingTabsProps) {
   return (
-    <div className="w-screen relative h-10">
+    <div className="w-screen lg:w-3/4 lg:mx-auto relative h-10">
       <ScrollArea>
         {children}
         <ScrollBar orientation="horizontal" />

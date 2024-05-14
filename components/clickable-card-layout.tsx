@@ -18,7 +18,7 @@ interface BasicCardLayoutProps {
   title: string;
   description: string;
   link?: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
@@ -37,46 +37,53 @@ export default function BasicCardLayout({
 }: BasicCardLayoutProps) {
   return (
     <div key={key}>
-    <Card className="relative hover:shadow-xl duration-500 ease-in-out">
-      <CardHeader>
-        <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>{children}</AccordionTrigger>
+      <Card className="relative hover:shadow-xl duration-500 ease-in-out">
+        <CardHeader>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <motion.div
+                  whileHover={{ translateY: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {children}
+                </motion.div>
+              </AccordionTrigger>
 
-            <AccordionContent>
-              <motion.article
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, transition: { duration: 1 } }}
-                variants={{
-                  visible: { transition: { staggerChildren: 0.3 } },
-                }}
-                className="space-y-6 my-12 text-center"
-              >
-                <CardTitle>
-                  <motion.h1
-                    variants={{
-                      hidden: { opacity: 0, y: -20 },
-                      visible,
-                    }}
-                  >
-                    {title}
-                  </motion.h1>
-                </CardTitle>
+              <AccordionContent>
+                <motion.article
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, transition: { duration: 1 } }}
+                  variants={{
+                    visible: { transition: { staggerChildren: 0.3 } },
+                  }}
+                  className="space-y-6 my-12 text-center"
+                >
+                  <CardTitle>
+                    <motion.h1
+                      variants={{
+                        hidden: { opacity: 0, y: -20 },
+                        visible,
+                      }}
+                    >
+                      {title}
+                    </motion.h1>
+                  </CardTitle>
 
-                <CardDescription className="max-w-[352px] mx-auto">
-                  <motion.p variants={itemVariants}>{description}</motion.p>
-                </CardDescription>
+                  <CardDescription className="max-w-[352px] mx-auto">
+                    <motion.p variants={itemVariants}>{description}</motion.p>
+                  </CardDescription>
 
-                <CardFooter className="absolute bottom-0 right-0">
-                  <motion.p variants={itemVariants}>{link}</motion.p>
-                </CardFooter>
-              </motion.article>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </CardHeader>
-    </Card>
-     </div>
+                  <CardFooter className="absolute bottom-0 right-0">
+                    <motion.p variants={itemVariants}>{link}</motion.p>
+                  </CardFooter>
+                </motion.article>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </CardHeader>
+      </Card>
+    </div>
   );
 }

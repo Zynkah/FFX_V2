@@ -1,11 +1,11 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
-import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import SkeletonCard from "@/components/isLoading";
 import ReligionTabs from "@/components/religion-tabs";
+import Image from "next/image";
 
 interface Aeon {
   id: string;
@@ -57,10 +57,6 @@ export default function Aeons() {
                   )
                 }
               >
-                <motion.div
-                  whileHover={{ translateY: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
                   <Image
                     src={aeon.image}
                     width={aeon.image_width}
@@ -68,7 +64,6 @@ export default function Aeons() {
                     alt={aeon.name}
                     className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
                   />
-                </motion.div>
               </BasicCardLayout>
             </div>
           ))

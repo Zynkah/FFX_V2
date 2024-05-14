@@ -1,9 +1,9 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import SkeletonCard from "@/components/isLoading";
 interface BlitzballTeams {
   id: string;
@@ -53,10 +53,6 @@ export default function BlitzballTeams() {
                 )
               }
             >
-              <motion.div
-                whileHover={{ translateY: -3 }}
-                whileTap={{ scale: 0.95 }}
-              >
                 <Image
                   src={team.image}
                   width={team.image_width}
@@ -64,7 +60,6 @@ export default function BlitzballTeams() {
                   alt={team.name}
                   className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
                 />
-              </motion.div>
             </BasicCardLayout>
           </div>
         ))
