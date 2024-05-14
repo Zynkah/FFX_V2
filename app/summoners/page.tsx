@@ -47,6 +47,7 @@ export default function Summoners() {
               key={summoner.id}
             >
               <BasicCardLayout
+                key={summoner.id}
                 title={summoner.name}
                 description={summoner.description}
               >

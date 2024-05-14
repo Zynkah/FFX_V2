@@ -7,7 +7,7 @@ export default function Religion() {
   return (
     <>
       <ReligionTabs />
-      <div className="p-4 md:p-16 max-w-prose mx-auto">
+      <div className="p-4 md:p-16 mx-auto">
         <p className="text-lg">
           <span className="text-2xl">R</span>eligion is an important part of
           life for many of the peoples of Spira, with a large majority of the

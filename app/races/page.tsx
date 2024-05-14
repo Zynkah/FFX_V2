@@ -44,13 +44,17 @@ export default function Races() {
             whileTap={{ scale: 0.95 }}
             key={race.id}
           >
-            <BasicCardLayout title={race.name} description={race.description}>
+            <BasicCardLayout
+              key={race.id}
+              title={race.name}
+              description={race.description}
+            >
               <Image
                 src={race.image}
                 width={race.image_width}
                 height={race.image_height}
                 alt={race.name}
-                className="flex justify-center items-center m-auto rounded-lg md:h-[500px] md:w-[500px] aspect-square object-scale-down"
+                className="flex justify-center items-center m-auto rounded-lg aspect-square md:size-[500px] object-scale-down"
               />
             </BasicCardLayout>
           </motion.div>

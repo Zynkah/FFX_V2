@@ -1,10 +1,10 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import BasicCardLayout from "@/components/clickable-card-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import SkeletonCard from "@/components/isLoading";
 
 interface Character {
@@ -44,35 +44,30 @@ export default function Characters() {
         characters
           .filter((character) => character.role === role)
           .map((character) => (
-            <div key={character.id}>
-              <BasicCardLayout
-                title={character.name}
-                description={character.description}
-                link={
-                  character.link && (
-                    <Link
-                      href={character.link}
-                      className="hover:text-fuchsia-500"
-                    >
-                      Learn More →
-                    </Link>
-                  )
-                }
-              >
-                <motion.div
-                  whileHover={{ translateY: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Image
-                    src={character.image}
-                    width={character.image_width}
-                    height={character.image_height}
-                    alt={character.name}
-                    className="flex justify-center items-center m-auto rounded-lg md:h-[500px] md:w-[500px] aspect-square object-scale-down"
-                  />
-                </motion.div>
-              </BasicCardLayout>
-            </div>
+            <BasicCardLayout
+              key={character.id}
+              title={character.name}
+              description={character.description}
+ 
+              link={
+                character.link && (
+                  <Link
+                    href={character.link}
+                    className="hover:text-fuchsia-500"
+                  >
+                    Learn More →
+                  </Link>
+                )
+              }
+            >
+                <Image
+                  src={character.image}
+                  width={character.image_width}
+                  height={character.image_height}
+                  alt={character.name}
+                  className="flex justify-center items-center m-auto rounded-lg md:size-[500px] aspect-square object-scale-down"
+                />
+            </BasicCardLayout>
           ))
       )}
     </div>

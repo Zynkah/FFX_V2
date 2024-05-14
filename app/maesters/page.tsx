@@ -41,7 +41,11 @@ export default function Maesters() {
             whileTap={{ scale: 0.95 }}
             key={maester.id}
           >
-            <BasicCardLayout title={maester.name} description={maester.role}>
+            <BasicCardLayout
+              key={maester.id}
+              title={maester.name}
+              description={maester.role}
+            >
               <Image
                 src={maester.image}
                 width={maester.image_width}
