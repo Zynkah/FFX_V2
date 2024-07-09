@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import PlayersTable from "@/components/players-table";
 import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Image from "next/image";
 
 interface Players {
   id: string;
@@ -15,7 +14,7 @@ interface Players {
   image_width: number;
 }
 
-export default function BesaidAurochs() {
+export default function KilikaBeasts() {
   const [players, setPlayers] = useState<Players[]>([]);
 
   useEffect(() => {
@@ -42,22 +41,18 @@ export default function BesaidAurochs() {
         </TableRow>
       </TableHeader>
       {players
-        .filter((player) => player.team_name === "Besaid Aurochs")
+        .filter((player) => player.team_name === "Kilika Beasts")
         .map((player) => (
           <PlayersTable
             key={player.id}
             name={player.name}
             location={player.location}
             techniques={player.techniques}
-          >
-            <Image
-              src={player.image}
-              width={player.image_width}
-              height={player.image_height}
-              alt={player.name}
-              className="flex justify-center items-center m-auto rounded-lg object-scale-down"
-            />
-          </PlayersTable>
+            src={player.image}
+            width={player.image_width}
+            height={player.image_height}
+            alt={player.name}
+          ></PlayersTable>
         ))}
     </Table>
   );

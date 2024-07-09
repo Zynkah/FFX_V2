@@ -46,11 +46,11 @@ export default function BlitzballTeams() {
               title={team.name}
               description={team.description}
               link={
-                team.link && (
+                team.link ? (
                   <Link href={team.link} className="hover:text-fuchsia-500">
                     Learn More →
                   </Link>
-                )
+                ) : <></>
               }
             >
                 <Image
